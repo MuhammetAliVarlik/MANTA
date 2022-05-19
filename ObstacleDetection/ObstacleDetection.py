@@ -126,9 +126,9 @@ while True:
     half = cv2.drawContours(half, contours, -1, (0, 255, 75), 2)
     ret2, thresh3 = cv2.threshold(half, 135, 255, cv2.THRESH_BINARY)
     height, width = thresh3.shape
-    thresh3 = thresh3[0:int(height / 2)-40, 0:width]
+    """thresh3 = thresh3[0:int(height / 2)-40, 0:width]
     top_half=thresh3
-    bottom_half = thresh3
+    bottom_half = thresh3"""
     E1 = cv2.Canny(thresh3, Threshold1, Threshold2, FilterSize)
     contours2, hierarchy2 = cv2.findContours(E1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     """cnt=contours2[]
@@ -140,7 +140,7 @@ while True:
     #print(left,right,top,bottom)
     #cv2.circle(half_orj, top, 5, (0, 0, 255), -1)
     half_orj = cv2.drawContours(half_orj, contours2, -1, (0, 255, 75), 1)
-    cv2.imshow("Screen",thresh3)
+    cv2.imshow("Screen",half_orj)
     if cv2.waitKey(1)==27:
         break
 cv2.destroyAllWindows()
